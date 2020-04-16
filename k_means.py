@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('dataset/flags_dataset.csv')
+df = pd.read_csv('dataset/flags_dataset_formatted.csv')
 print(df.head())
 
 attrs = [i for i in range(7, 28)]
