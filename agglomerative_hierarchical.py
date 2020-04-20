@@ -61,7 +61,6 @@ def run_algorithm(linkages, cluster_count=0):
     x = preprocessing.scale(x)
 
     for linkage in linkages:
-        print(linkage)
         plt.title('Dendogram for ' + linkage + ' linkage')
         shc.dendrogram(shc.linkage(x, method=linkage), truncate_mode='level', p=5, show_contracted=True)
         plt.show()
@@ -75,7 +74,7 @@ def run_algorithm(linkages, cluster_count=0):
                 run_algorithm_for_k(k, linkage)
                 print(str(k) + '\t:\t', silhouette_scores[k-2])
 
-            plt.plot(range(2, 11), silhouette_scores, label=linkage)
+            plt.plot(range(2, 11), silhouette_scores, label=linkage, marker='o')
             plt.title('Comparison among various k values for linkage')
             plt.xlabel('No. of clusters')
             plt.ylabel('Score')
