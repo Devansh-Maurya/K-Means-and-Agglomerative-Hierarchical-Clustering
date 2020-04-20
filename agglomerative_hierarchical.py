@@ -77,7 +77,7 @@ def run_algorithm(linkages, cluster_count=0):
             plt.plot(range(2, 11), silhouette_scores, label=linkage, marker='o')
             plt.title('Comparison among various k values for linkage')
             plt.xlabel('No. of clusters')
-            plt.ylabel('Score')
+            plt.ylabel('Silhouette Score')
             plt.legend()
     else:
         silhouette_scores = []
