@@ -43,7 +43,7 @@ def run_algorithm(init_methods, k=0):
         kmeans.fit(x)
         errors.append(kmeans.inertia_)
 
-    df = pd.read_csv('dataset/graduate-admissions/Admission_Predict.csv')
+    df = pd.read_csv('dataset/graduate-admissions/graduate_admissions_dataset.csv')
 
     # Select all attributes except:
     # Serial No.: Not relevant as its unique for every record

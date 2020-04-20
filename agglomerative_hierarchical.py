@@ -19,7 +19,7 @@ def agglomerative_hierarchical_clustering():
     index = int(input('Enter your choice: '))
 
     if index in range(1, len(linkage_methods) + 1):
-        linkage_method = linkage_methods[index-1]
+        linkage_method = [linkage_methods[index-1]]
     elif index == len(linkage_methods) + 1:
         linkage_method = linkage_methods
     else:
@@ -48,7 +48,7 @@ def run_algorithm(linkages, cluster_count=0):
         score = (metrics.silhouette_score(x, cluster.labels_, metric='euclidean'))
         silhouette_scores.append(score)
 
-    df = pd.read_csv('dataset/graduate-admissions/Admission_Predict.csv')
+    df = pd.read_csv('graduate_admissions_dataset.csv')
 
     # Select all attributes except:
     # Serial No.: Not relevant as its unique for every record
@@ -61,6 +61,7 @@ def run_algorithm(linkages, cluster_count=0):
     x = preprocessing.scale(x)
 
     for linkage in linkages:
+        print(linkage)
         plt.title('Dendogram for ' + linkage + ' linkage')
         shc.dendrogram(shc.linkage(x, method=linkage), truncate_mode='level', p=5, show_contracted=True)
         plt.show()
@@ -94,4 +95,3 @@ def run_algorithm(linkages, cluster_count=0):
 
 if __name__ == '__main__':
     agglomerative_hierarchical_clustering()
-    #run_algorithm()
