@@ -43,7 +43,7 @@ def run_algorithm(init_methods, k=0):
         kmeans.fit(x)
         errors.append(kmeans.inertia_)
 
-    df = pd.read_csv('dataset/graduate-admissions/graduate_admissions_dataset.csv')
+    df = pd.read_csv('graduate_admissions_dataset.csv')
 
     # Select all attributes except:
     # Serial No.: Not relevant as its unique for every record
@@ -55,6 +55,7 @@ def run_algorithm(init_methods, k=0):
     # Apply pre-processing to scale all the values to have approx. same mean and S.D.
     x = preprocessing.scale(x)
 
+    # Run for all the centroid initialisation methods
     for i, init_method in enumerate(init_methods):
         errors = []
         print('\nSSE error for k (' + init_method + '):')
@@ -62,7 +63,7 @@ def run_algorithm(init_methods, k=0):
             for i in range(1, 11):
                 run_algorithm_for_k(i, init_method)
                 print(str(i) + '\t:\t', errors[i-1])
-            plt.plot(range(1, 11), errors, label=init_method)
+            plt.plot(range(1, 11), errors, label=init_method, marker='o')
             plt.title('Comparison among various k values')
             plt.xlabel('No. of clusters')
             plt.ylabel('Error')
